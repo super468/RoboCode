@@ -103,14 +103,14 @@ public class Robocode extends JApplet{
     	
 		URL url = getDocumentBase();
 		FileUtil.setUrl(getCodeBase());
-		
+		String selectedRobot = getParameter("selected_robots");
 		JSObject window = JSObject.getWindow(this);
         String summary = "hello world";
         LogUtil.setWindow(window);
         LogUtil.log(summary);
         LogUtil.log("codebase url:: " + url.getFile());
 		System.out.println(url.getFile());
-		JPanel newContentPane = robocode.initialize(new String[0]); 
+		JPanel newContentPane = robocode.initialize(new String[] {selectedRobot}); 
 		setContentPane(newContentPane); 
 	}
 	public JPanel initialize(String args[]) {
@@ -125,7 +125,7 @@ public class Robocode extends JApplet{
 			
 	
 			BattleProperties battleProperties = manager.getBattleManager().getBattleProperties();
-			battleProperties.setSelectedRobots("sample.Corners,sample.Fire");
+			battleProperties.setSelectedRobots(args[0]);
 			manager.getBattleManager().startNewBattle(battleProperties, true, false);
 			//manager.getBattleManager().getBattle().setDesiredTPS(tps);
 			

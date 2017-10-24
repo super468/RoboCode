@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.BufferedReader;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -96,8 +97,9 @@ public class EditServlet extends HttpServlet {
 		String password = "root";
 		System.out.println("Hi");
 		try {
-			Connection conn = DriverManager.getConnection(url, user, password);
-
+			//Connection conn = DriverManager.getConnection(url, user, password);
+			//Connection  conn = new CloudConnection().getConnection();
+			Connection  conn = new LocalConnection().getConn();
 		//	System.out.println("Hi");
 			Statement statement = (Statement) conn.createStatement();
 			String newstmt = "SELECT file,filepath,RobotCode,id from robot where robotID='"+robotid+"' and packageID='"+packageid+"' and userID = '"+userid+"'";

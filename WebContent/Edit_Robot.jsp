@@ -2,9 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
+<%@page import="servlets.*"%>
+<%-- <%@page import="org.springframework.cloud.*" %> --%>
+<%@page import="org.springframework.cloud.service.ServiceInfo" %>
+
 <%
 	ResultSet resultset = null;
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,6 +43,21 @@
 </head>
 
 <body onload ="onloadPage()">
+<%-- <%
+	ResultSet resultset = null;
+	CloudConnection con= new CloudConnection();
+	List<ServiceInfo> info =con.getinfo();
+	out.println("service info");
+	for(int i=0; i<info.size();i++) {
+	out.println(info.get(i).toString());
+	} 
+	out.println("database info");
+	List<ServiceInfo> info2 =con.getdatabaseinfo();
+	for(int i=0; i<info2.size();i++) {
+	out.println(info2.get(i).toString());
+	}
+	
+%> --%>
 <script type="text/javascript">
 function onloadPage(){
 	 document.getElementById('textArea').style.display = "none";
@@ -111,10 +131,11 @@ function onloadPage(){
 	<script type="text/javascript">
 		function Compile2() {
 
-			var code = editor.getValue();
+			/* var code = editor.getValue();
 			document.getElementById('textArea').style.display = "block";
-			document.getElementById('textArea').value = code;
-			document.getElementById('divdata').action = "compileservlet";
+			document.getElementById('textArea').value = code; */
+			alert("Compiled Success!");
+			document.getElementById('divdata').action = "CompileServlet";
 			document.getElementById("divdata").submit();
 
 		}
@@ -148,7 +169,7 @@ function onloadPage(){
 		}
 	</script>
 	<div class="dropdown">
-		<button onclick="SaveAndCompile();">Compile</button>
+		<button onclick="Compile2();">Compile</button>
 	</div>
 
 	<div class="dropdown">
@@ -169,10 +190,11 @@ function onloadPage(){
 							HashMap<String, List<String>> map = new HashMap<String, List<String>>();
 							HashMap<String, List<String>> domain_robot_map = new HashMap<String, List<String>>();							
 								try {
-									String connectionURL = "jdbc:mysql://localhost:3306/robocode";
-									Class.forName("com.mysql.jdbc.Driver").newInstance();
+/*  									String connectionURL = "jdbc:mysql://localhost:3306/robocode";
+									Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 									Connection connection = DriverManager.getConnection(connectionURL, "root",
-											"root");
+											"root");  */
+									Connection  connection = new LocalConnection().getConn();
 
 									Statement statement = connection.createStatement();
 									String selectString="SELECT userID, packageID, robotID from robot";
@@ -342,7 +364,7 @@ function onloadPage(){
         var undo=new ace.UndoManager();
         editor.getSession().setUndoManager(undo); */
         function SaveRobot2() {
-        		alert("提示信息！");
+        		alert("It has been saved！");
             //var code = editor.getValue();
             //document.getElementById('RobotCode').style.display = "block";
             //document.getElementById('RobotCode').value=code;

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
+<%@page import="servlets.*"%>
+<%@page import="org.springframework.cloud.service.ServiceInfo" %>
 <%
 	ResultSet resultset = null;
 %>
@@ -65,11 +67,12 @@
 							HashMap<String, List<String>> map = new HashMap<String, List<String>>();
 							HashMap<String, List<String>> domain_robot_map = new HashMap<String, List<String>>();							
 								try {
-									String connectionURL = "jdbc:mysql://localhost:3306/robocode";
+/* 									String connectionURL = "jdbc:mysql://localhost:3306/robocode";
 									Class.forName("com.mysql.jdbc.Driver").newInstance();
 									Connection connection = DriverManager.getConnection(connectionURL, "root",
-											"root");
-
+											"root"); */
+									//Connection  connection = new CloudConnection().getConnection();
+									Connection  connection = new LocalConnection().getConn();
 									Statement statement = connection.createStatement();
 									String selectString="SELECT userID, packageID, robotID from robot";
 									resultset = statement
@@ -201,7 +204,7 @@
 			                async : false,
 			                success : function(html) {
 			    				console.log(html);
-			    				window.location.replace("NewRobot2.jsp"); 
+			    				window.location.replace("Edit_Robot.jsp"); 
 			                }
 			            });  
 			        	event.preventDefault();

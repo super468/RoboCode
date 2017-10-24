@@ -25,8 +25,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
@@ -42,22 +48,22 @@
 		<link>
 			<name>WebContent/img/power button.png</name>
 			<type>1</type>
-			<location>/Users/wts/git/RobocodeV1/WebContent/img/power button.png</location>
+			<location>/Users/wts/RobocodeV1/WebContent/img/power button.png</location>
 		</link>
 		<link>
 			<name>WebContent/WEB-INF/lib/asm-3.1.jar</name>
 			<type>1</type>
-			<location>/Users/wts/git/RobocodeV1/WebContent/WEB-INF/lib/asm-3.1.jar</location>
+			<location>/Users/wts/RobocodeV1/WebContent/WEB-INF/lib/asm-3.1.jar</location>
 		</link>
 		<link>
 			<name>WebContent/WEB-INF/lib/javax.servlet-3.0.jar</name>
 			<type>1</type>
-			<location>/Users/wts/git/RobocodeV1/WebContent/WEB-INF/lib/javax.servlet-3.0.jar</location>
+			<location>/Users/wts/RobocodeV1/WebContent/WEB-INF/lib/javax.servlet-3.0.jar</location>
 		</link>
 		<link>
 			<name>WebContent/font-awesome/fonts/FredokaOne-Regular.ttf</name>
 			<type>1</type>
-			<location>/Users/wts/git/RobocodeV1/WebContent/font-awesome/fonts/FredokaOne-Regular.ttf</location>
+			<location>/Users/wts/RobocodeV1/WebContent/font-awesome/fonts/FredokaOne-Regular.ttf</location>
 		</link>
 	</linkedResources>
 	<variableList>

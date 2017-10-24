@@ -173,7 +173,9 @@ public class NewRobotServlet extends HttpServlet {
 				"}	\n";
 		System.out.println(robotDTO.getCreatedDate());
 		try {
-			Connection conn = DriverManager.getConnection(url, username, password);
+			//Connection conn = DriverManager.getConnection(url, username, password);
+			//Connection  conn = new CloudConnection().getConnection();
+			Connection  conn = new LocalConnection().getConn();
 			String sql = "INSERT INTO robot (CreatedDate,RobotCode,packageID,robotID,userID,filepath,dataaccess) VALUES(?, ?, ?, ?, ?, ?, ?) ";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, robotDTO.getCreatedDate());

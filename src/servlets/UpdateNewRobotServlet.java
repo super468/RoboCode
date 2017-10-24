@@ -84,7 +84,9 @@ public class UpdateNewRobotServlet extends HttpServlet {
 		request.setAttribute("date", robotDTO.getUpdatedDate());
 		
 		try {
-			Connection conn = DriverManager.getConnection(url, user, password);
+			Connection  conn = new LocalConnection().getConn();
+			//Connection conn = DriverManager.getConnection(url, user, password);
+			//Connection  conn = new CloudConnection().getConnection();
 			//System.out.println(robotDTO.getPackageId()+" "+robotDTO.getRobotId());
 			//set updated date
 			String sql = "UPDATE robot SET UpdatedDate='"+robotDTO.getUpdatedDate()+"'WHERE RobotID='"+robotDTO.getRobotName()+"'";
